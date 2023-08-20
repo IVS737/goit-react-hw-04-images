@@ -41,10 +41,12 @@ export const App = () => {
     loadMoreImages();
   }, [page, query]);
 
-  const handleSearch = query => {
-    setQuery(query);
-    setPage(1);
-    setImages([]);
+  const handleSearch = prevQuery => {
+    if (prevQuery !== query) {
+      setQuery(prevQuery);
+      setPage(1);
+      setImages([]);
+    }
   };
 
   const handleLoadMore = () => {

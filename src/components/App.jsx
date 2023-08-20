@@ -11,16 +11,6 @@ import styles from './App.module.css';
 export const App = () => {
   const LIMIT = 12;
 
-  // state = {
-  //   showModal: false,
-  //   activeItem: null,
-  //   images: [],
-  //   page: 1,
-  //   isLoading: false,
-  //   error: '',
-  //   query: '',
-  // };
-
   const [showModalBull, setShowModalBull] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
   const [images, setImages] = useState([]);
@@ -28,19 +18,6 @@ export const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
-
-  // componentDidMount() {
-  //   this.loadMoreImages();
-  // }
-
-  // componentDidUpdate(_, prevState) {
-  //   if (
-  //     prevState.page !== this.state.page ||
-  //     prevState.query !== this.state.query
-  //   ) {
-  //     this.loadMoreImages();
-  //   }
-  // }
 
   useEffect(() => {
     if (!query || !page) {
@@ -110,7 +87,9 @@ export const App = () => {
           visible={true}
           className={styles.Loader}
         />
-      ) : null}
+      ) : (
+        error
+      )}
 
       <Modal
         show={showModalBull && typeof activeItem === 'number'}
